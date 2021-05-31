@@ -24,7 +24,7 @@
           <li>
             <router-link
               class="px-3 py-2 transition-opacity border-b-2 border-gray-300 border-opacity-0  hover:border-opacity-100"
-              to="/movies"
+              to="/"
             >
               Movies
             </router-link>
@@ -48,11 +48,30 @@
       </div>
 
       <div class="flex items-center gap-5 lg:gap-10">
-        <input
-          type="text"
-          class="flex-1 px-5 py-1 bg-gray-700 rounded-full outline-none  focus:ring-2 ring-gray-300"
-          placeholder="search..."
-        />
+        <div class="relative flex items-center">
+          <input
+            type="text"
+            class="flex-1 py-1 pl-5 pr-8 bg-gray-700 rounded-full outline-none  focus:ring-2 ring-gray-300"
+            placeholder="search..."
+          />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute w-4 h-4 text-gray-300 right-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+
+        <div class="absolute top-20">search result</div>
 
         <img
           src="@/assets/avatar.png"
