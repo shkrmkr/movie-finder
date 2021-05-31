@@ -23,7 +23,13 @@
         <ul class="flex">
           <li>
             <router-link
-              class="px-3 py-2 transition-opacity border-b-2 border-gray-300 border-opacity-0  hover:border-opacity-100"
+              class="
+                px-3
+                py-2
+                transition-opacity
+                border-b-2 border-gray-300 border-opacity-0
+                hover:border-opacity-100
+              "
               to="/"
             >
               Movies
@@ -31,7 +37,12 @@
           </li>
           <li>
             <router-link
-              class="px-3 py-2 border-b-2 border-gray-300 border-opacity-0  hover:border-opacity-100"
+              class="
+                px-3
+                py-2
+                border-b-2 border-gray-300 border-opacity-0
+                hover:border-opacity-100
+              "
               to="/actors"
             >
               Actors
@@ -39,7 +50,12 @@
           </li>
           <li>
             <router-link
-              class="px-3 py-2 border-b-2 border-transparent  hover:border-gray-300"
+              class="
+                px-3
+                py-2
+                border-b-2 border-transparent
+                hover:border-gray-300
+              "
               to="/profile"
               >Profile</router-link
             >
@@ -51,7 +67,17 @@
         <div class="relative flex items-center">
           <input
             type="text"
-            class="flex-1 py-1 pl-5 pr-8 bg-gray-700 rounded-full outline-none  focus:ring-2 ring-gray-300"
+            class="
+              flex-1
+              py-1
+              pl-5
+              pr-8
+              bg-gray-700
+              rounded-full
+              outline-none
+              focus:ring-2
+              ring-gray-300
+            "
             placeholder="search..."
           />
 
@@ -71,7 +97,21 @@
           </svg>
         </div>
 
-        <div class="absolute top-20">search result</div>
+        <div v-if="false" class="absolute p-2 bg-gray-600 rounded w-72 top-20">
+          <ul>
+            <li class="flex items-center gap-2 p-2 border-b border-gray-400">
+              <img src="@/assets/esotsm.jpg" alt="esotsm" class="w-10" />
+              <span>Eternal Sunshune of the Spotless Mind</span>
+            </li>
+            <li class="flex items-center gap-2 p-2">
+              <img src="@/assets/esotsm.jpg" alt="esotsm" class="w-10" />
+              <span>
+                Eternal Sunshune of the Spotless Mind fdss sdf dsfoisdafhj
+                sdfoij sdfijosdaijf osdfij
+              </span>
+            </li>
+          </ul>
+        </div>
 
         <img
           src="@/assets/avatar.png"
