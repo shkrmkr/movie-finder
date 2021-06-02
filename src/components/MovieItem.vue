@@ -4,13 +4,7 @@
       <img
         :src="posterPath"
         :alt="`poster of ${movie.title}`"
-        class="
-          object-cover
-          transition-opacity
-          duration-150
-          ease-in
-          hover:opacity-50
-        "
+        class="object-cover transition-opacity duration-150 ease-in  hover:opacity-50"
       />
     </router-link>
 
@@ -71,7 +65,7 @@ export default defineComponent({
           return acc + `${genre.name}, `;
         }
 
-        return acc + `${genre.name}`;
+        return acc + genre.name;
       }, '')
     );
 
