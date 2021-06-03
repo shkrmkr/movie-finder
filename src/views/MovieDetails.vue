@@ -127,11 +127,11 @@ import Cast from '@/components/Cast.vue';
 import MediaModal from '@/components/MediaModal.vue';
 import MovieImages from '@/components/MovieImages.vue';
 import { MovieDetailsResponse } from '@/types';
-import { computed, defineComponent, onMounted, reactive, toRefs } from 'vue';
+import { computed, defineComponent, reactive, toRefs, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
-  name: 'Movie',
+  name: 'MovieDetails',
   components: {
     Cast,
     MovieImages,
@@ -147,16 +147,11 @@ export default defineComponent({
       mediaURL: '',
     });
 
-    const fetchMovie = async () => {
+    watchEffect(async () => {
       const { data } = await api.get<MovieDetailsResponse>(
         `/movie/${route.params.id}?append_to_response=credits,videos,images`
       );
       state.movie = data;
-      console.log(data);
-    };
-
-    onMounted(() => {
-      fetchMovie();
     });
 
     const openYoutubeModal = () => {
