@@ -220,3 +220,78 @@ export type KnownFor =
       name: string;
       original_name: string;
     };
+
+export interface PersonDetailsResponse {
+  birthday: string | null;
+  known_for_department: string;
+  deathday: string | null;
+  id: number;
+  name: string;
+  also_known_as: string[];
+  gender: number;
+  biography: string;
+  popularity: number;
+  place_of_birth: string | null;
+  profile_path: string;
+  adult: boolean;
+  imdb_id: string;
+  homepage: string | null;
+}
+
+export interface CastOf {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  vote_count: number;
+  original_language: string;
+  original_title: string;
+  poster_path: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  id: number;
+  overview: string;
+  release_date: string;
+  popularity: number;
+  character: string;
+  credit_id: string;
+  order: number;
+  media_type: string;
+  original_name: string;
+  name: string;
+  origin_country: string[];
+  first_air_date: string;
+  episode_count?: number;
+}
+
+export interface CrewOf {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  popularity: number;
+  credit_id: string;
+  department: string;
+  job: string;
+  media_type: string;
+  first_air_date: string;
+  original_name: string;
+  origin_country: string[];
+  name: string;
+  episode_count?: number;
+}
+
+export interface PersonCreditsResponse {
+  cast: CastOf[];
+  crew: CrewOf[];
+  id: number;
+}
