@@ -272,7 +272,7 @@ export interface CrewOf {
   original_language: string;
   original_title: string;
   overview: string;
-  poster_path: string;
+  poster_path: string | null;
   release_date: string;
   title: string;
   video: boolean;
@@ -294,4 +294,15 @@ export interface PersonCreditsResponse {
   cast: CastOf[];
   crew: CrewOf[];
   id: number;
+}
+
+export interface PersonExternalIdsResponse {
+  imdb_id: string | null;
+  facebook_id: string | null;
+  freebase_mid: string | null;
+  freebase_id: string | null;
+  tvrage_id: number | null;
+  twitter_id: string | null;
+  id: number;
+  instagram_id: string | null;
 }

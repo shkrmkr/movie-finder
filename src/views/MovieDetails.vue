@@ -1,69 +1,76 @@
 <template>
   <div v-if="movie">
-    <div
-      class="flex flex-col gap-5 pb-10 border-b border-gray-600  md:gap-10 md:flex-row"
-    >
-      <div class="w-64 mx-auto md:mx-0">
-        <img
-          :src="posterPath"
-          :alt="`poster of the movie ${movie.title}`"
-          class="object-cover"
-        />
-      </div>
-
-      <div class="flex flex-col flex-1 gap-5">
-        <div>
-          <h2 class="text-4xl font-semibold">
-            {{ movie.title }}
-          </h2>
-
-          <div class="flex items-center mt-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5 text-yellow-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
-            </svg>
-            <span class="px-2 text-sm text-gray-500 border-r border-gray-500">
-              {{ movie.vote_average }}/10
-            </span>
-            <span class="px-2 text-sm text-gray-500 border-r border-gray-500">
-              {{ movie.release_date }}
-            </span>
-            <span class="px-2 text-sm text-gray-500">
-              {{ genres }}
-            </span>
+    <header class="pb-10 border-b border-gray-600">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col gap-5 md:gap-10 md:flex-row">
+          <div class="w-64 mx-auto md:mx-0">
+            <img
+              :src="posterPath"
+              :alt="`poster of the movie ${movie.title}`"
+              class="object-cover"
+            />
           </div>
-        </div>
 
-        <p>
-          {{ movie.overview }}
-        </p>
+          <div class="flex flex-col flex-1 gap-5">
+            <div>
+              <h2 class="text-4xl font-semibold">
+                {{ movie.title }}
+              </h2>
 
-        <div>
-          <span class="font-semibold">Top Credits</span>
-
-          <div class="flex flex-col gap-2 mt-1">
-            <div class="flex flex-col">
-              <span class="text-gray-500">Director</span>
-              <span>{{ directors }}</span>
+              <div class="flex items-center mt-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 text-yellow-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <span
+                  class="px-2 text-sm text-gray-500 border-r border-gray-500"
+                >
+                  {{ movie.vote_average }}/10
+                </span>
+                <span
+                  class="px-2 text-sm text-gray-500 border-r border-gray-500"
+                >
+                  {{ movie.release_date }}
+                </span>
+                <span class="px-2 text-sm text-gray-500">
+                  {{ genres }}
+                </span>
+              </div>
             </div>
 
-            <div class="flex flex-col">
-              <span class="text-gray-500">Writers</span>
-              <span>{{ writers }}</span>
+            <p>
+              {{ movie.overview }}
+            </p>
+
+            <div>
+              <span class="font-semibold">Top Credits</span>
+
+              <div class="flex flex-col gap-2 mt-1">
+                <div class="flex flex-col">
+                  <span class="text-gray-500">Director</span>
+                  <span>{{ directors }}</span>
+                </div>
+
+                <div class="flex flex-col">
+                  <span class="text-gray-500">Writers</span>
+                  <span>{{ writers }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div
-          class="flex flex-col w-64 gap-5 mx-auto mt-5  md:mx-0 md:w-auto md:flex-row md:gap-10"
+          class="flex flex-col justify-center w-64 gap-5 mx-auto mt-10  md:w-auto md:mx-0 md:flex-row md:gap-10"
         >
           <button
+            v-if="hasVideo"
             @click="openYoutubeModal"
             class="inline-flex items-center justify-center gap-3 px-5 py-3 font-bold text-gray-800 bg-yellow-500 rounded "
           >
@@ -104,7 +111,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </header>
 
     <Cast :cast="movie.credits.cast" />
     <MovieImages
@@ -185,6 +192,8 @@ export default defineComponent({
       return '';
     });
 
+    const hasVideo = computed(() => !!state.movie?.videos.results[0]);
+
     const posterPath = computed(
       () => `https://image.tmdb.org/t/p/w500${state.movie?.poster_path}`
     );
@@ -214,6 +223,7 @@ export default defineComponent({
       posterPath,
       directors,
       writers,
+      hasVideo,
       openYoutubeModal,
       openImageModal,
       closeModal,

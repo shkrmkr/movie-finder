@@ -33,7 +33,7 @@
 
   <div
     v-if="searchTerm.length !== 0"
-    class="absolute z-20 p-2 overflow-scroll bg-gray-600 rounded  scrollbar-hide w-72 top-16"
+    class="absolute z-20 p-2 overflow-scroll bg-gray-600 rounded  scrollbar-hide w-72 top-28 sm:top-16"
   >
     <ul class="h-48" v-if="searchResults.length !== 0">
       <li

@@ -1,6 +1,8 @@
 <template>
-  <div class="border-b border-gray-700">
-    <div class="container flex items-center justify-between p-5 mx-auto">
+  <div class="sticky top-0 z-50 bg-gray-800 border-b border-gray-700">
+    <div
+      class="container flex flex-col items-center gap-2 p-5 mx-auto  sm:justify-between sm:flex-row"
+    >
       <div class="flex items-center gap-3 lg:gap-8">
         <router-link to="/" class="flex items-center gap-2">
           <svg
@@ -47,15 +49,8 @@
           </li>
         </ul>
       </div>
-
-      <div class="flex items-center gap-5 lg:gap-10">
+      <div>
         <SearchInput />
-
-        <img
-          src="@/assets/avatar.png"
-          alt="avatar placeholder"
-          class="w-10 rounded-full ring-3 ring-red-500"
-        />
       </div>
     </div>
   </div>
